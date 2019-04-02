@@ -6,9 +6,6 @@ class Cell {
         this.walls = [true, true, true, true];
         this.visited = false;
     }
-
-    
-
 }
 
 export const Cell;
