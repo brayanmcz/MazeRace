@@ -2,7 +2,6 @@ export class Grid {
     constructor(mazeSize) {
         this.grid = [mazeSize];
         for (var i = 0; i < mazeSize; i++) {
-            this.grid[i]
         }
     }
 
@@ -31,4 +30,5 @@ export class Grid {
         if (left && !left.visited) {
         neighbours.push(left);
         }
+    }
 }

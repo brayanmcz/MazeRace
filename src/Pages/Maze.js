@@ -4,8 +4,6 @@ import { Cell }  from './maze/cell.js';
 import { Player } from './maze/player.js';
 import P5Wrapper from "react-p5-wrapper";
 
-
-
 class Maze extends Component {
     gen_maze(p5) {
         p5.frameRate(60);
@@ -31,7 +29,7 @@ class Maze extends Component {
 
     render() {
         return (
-            <p>GAME</p>
+            <P5Wrapper sketch={this.gen_maze} />
         );
     }
 }
