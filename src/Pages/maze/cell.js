@@ -6,10 +6,28 @@ export class Cell {
         this.walls = [true, true, true, true];
         this.visited = false;
     }
-<<<<<<< HEAD:src/Pages/Maze/cell.js
-}
 
-export const Cell;
-=======
+    showCell = (r, g, b, a) => {
+        var i = this.x * this.w;
+        var j = this.y * this.w;
+        p5.noStroke();
+        p5.fill(r, g, b, a);
+        for (var idx = 0; idx < 15; idx++) {
+          p5.rect(i, j, this.w, this.w);
+        }
+        p5.stroke(0, 0, 0);
+
+        if (this.walls[0]) {
+          p5.line(i, j, i + this.w, j);
+        }
+        if (this.walls[1]) {
+          p5.line(i + this.w, j, i + this.w, j + this.w);
+        }
+        if (this.walls[2]) {
+          p5.line(i + this.w, j + this.w, i, j + this.w);
+        }
+        if (this.walls[3]) {
+          p5.line(i, j + this.w, i, j);
+        }
+    };
 }
->>>>>>> 1fd06071cb416aadc3a187d269c2ef2d4c16a45d:src/Pages/maze/cell.js
