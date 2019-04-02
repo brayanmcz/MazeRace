@@ -13,3 +13,11 @@ var cellSize = canvasSize / mazeSize;
 
 var grid = new Grid(mazeSize);
 var cell = new Cell(cellSize);
+
+p5.setup = () => {
+    grid.gen_grid(Cell);
+}
+
+p5.draw = () => {
+    ;
+}
