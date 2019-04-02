@@ -1,3 +1,4 @@
+import React, { Component } from 'react';
 import Grid from 'maze/grid.js';
 import Cell from 'maze/cell.js';
 import Player from 'maze/player.js';
@@ -21,3 +22,13 @@ p5.setup = () => {
 p5.draw = () => {
     ;
 }
+
+class Maze extends Component {
+    render() {
+        return (
+            <p>GAME</p>
+        );
+    }
+}
+
+export default Maze;
