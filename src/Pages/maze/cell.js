@@ -1,4 +1,4 @@
-class Cell {
+export class Cell {
     constructor (x, y, cellSize) {
         this.x = x;
         this.y = y;
@@ -6,9 +6,4 @@ class Cell {
         this.walls = [true, true, true, true];
         this.visited = false;
     }
-
-    
-
 }
-
-export const Cell;

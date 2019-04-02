@@ -1,4 +1,4 @@
-class Grid {
+export class Grid {
     constructor(mazeSize) {
         this.grid = [mazeSize];
         for (var i = 0; i < mazeSize; i++) {
@@ -32,5 +32,3 @@ class Grid {
         neighbours.push(left);
         }
 }
-
-export const Grid;
