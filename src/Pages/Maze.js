@@ -36,7 +36,12 @@ class Maze extends Component {
 
     render() {
         return (
-            <p>GAME</p>
+            <div>
+            <p>Maze Game</p>
+            {
+                <P5Wrapper sketch={this.gen_maze} />
+            }
+            </div>
         );
     }
 }
