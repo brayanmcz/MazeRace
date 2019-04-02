@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; 
+import HomePage from './Pages/Home.js';
+import JoinPage from './Pages/Join';
+import CreatePage from './Pages/Create';
+import NotFoundPage from './Pages/404';
+import LobbyPage from './Pages/Lobby';
+
+const Wrapper = styled.div`
+
+`;
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Wrapper>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/join" component={JoinPage} />
+            <Route exact path='/create' component={CreatePage} />
+            <Route exact path='/lobby:id' component={LobbyPage} />
+            <Route component={NotFoundPage} />
+          </Switch>
+        </Router>        
+      </Wrapper>
     );
   }
 }

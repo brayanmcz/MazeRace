@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-class JoinPage extends Component {
+class HomePage extends Component {
     render(){
         return(
-            <p>Join Page</p>
+            <p>Home Page</p>
         )
     }
 }
 
-export default JoinPage;
+export default HomePage;
