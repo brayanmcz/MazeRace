@@ -7,31 +7,6 @@ export class Player {
         this.color = color;
     }
 
-    p5.keyPressed = () => {
-        if (
-          p5.keyCode === p5.UP_ARROW &&
-          grid[player.x][player.y].walls[0] === false
-        ) {
-          player.move(0);
-        } else if (
-          p5.keyCode === p5.DOWN_ARROW &&
-          grid[player.x][player.y].walls[2] === false
-        ) {
-          player.move(2);
-        } else if (
-          p5.keyCode === p5.LEFT_ARROW &&
-          grid[player.x][player.y].walls[3] === false
-        ) {
-          player.move(3);
-        } else if (
-          p5.keyCode === p5.RIGHT_ARROW &&
-          grid[player.x][player.y].walls[1] === false
-        ) {
-          player.move(1);
-        }
-        p5.redraw();
-    };
-
     move = (d) => {
         if (d === 0) this.y -= 1;
         if (d === 1) this.x += 1;
@@ -39,7 +14,7 @@ export class Player {
         if (d === 3) this.x -= 1;
     };
 
-    show = () => {
+    show = (cellSize) => {
         var i = this.x * cellSize;
         var j = this.y * cellSize;
         p5.noStroke();

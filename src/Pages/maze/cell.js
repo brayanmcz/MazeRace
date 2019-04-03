@@ -1,3 +1,5 @@
+import p5 from 'p5';
+
 export class Cell {
     constructor (x, y, cellSize) {
         this.x = x;
@@ -7,13 +9,13 @@ export class Cell {
         this.visited = false;
     }
 
-    showCell = (r, g, b, a) => {
-        var i = this.x * this.w;
-        var j = this.y * this.w;
+    show = (r, g, b, a) => {
+        var i = this.x * this.w - 0.25;
+        var j = this.y * this.w - 0.25;
         p5.noStroke();
         p5.fill(r, g, b, a);
-        for (var idx = 0; idx < 15; idx++) {
-          p5.rect(i, j, this.w, this.w);
+        for (var idx = 0; idx < 1; idx++) {
+          p5.rect(i, j, this.w + 0.5, this.w + 0.5);
         }
         p5.stroke(0, 0, 0);
 
