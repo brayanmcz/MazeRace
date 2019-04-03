@@ -1,7 +1,7 @@
 import { Cell }  from './cell.js';
 
 export class Grid {
-    constructor(mazeSize, cellSize,p5) {
+    constructor(mazeSize, cellSize, p5) {
         this.grid = [];
         var row = [];
         for (var y = 0; y < mazeSize; y++) {
@@ -11,6 +11,7 @@ export class Grid {
             this.grid[y] = row;
         }
         this.p5 = p5;
+        // this.mazeSize = mazeSize;
     }
 
     // Generates the Grid at intitialisation
@@ -18,13 +19,15 @@ export class Grid {
         var started = false;
         var stack = [];
         var current = Cell;
+        var next;
         while (!started || stack.length) {
             started = true;
-            var next = this.check_neighbors(current);
+            next = this.check_neighbors(current);
             if (next) {
               next.visited = true;
               stack.push(current);
-              this.removeWallsBetween(current, next);
+              this.remove_walls_between(current, next);
+              current.show(255,255,255,100);
               current = next;
             } else if (stack.length > 0) {
               current = stack.pop();
@@ -33,11 +36,11 @@ export class Grid {
     };
 
     // Check if there are available neighbors and return a random one
-    check_neighbors = (Cell, mazeSize) => {
+    check_neighbors = (Cell) => {
         var neighbours = [];
 
         var top = this.grid[Cell.x][Cell.y - 1];
-        if (Cell.x < mazeSize - 1)
+        if (Cell.x < this.mazeSize - 1)
             var right = this.grid[Cell.x + 1][Cell.y];
         var bottom = this.grid[Cell.x][Cell.y + 1];
         if (Cell.x > 0)
@@ -67,7 +70,7 @@ export class Grid {
     };
 
     // Remove the walls between two cells
-    removeWallsBetween = (CellA, CellB) => {
+    remove_walls_between = (CellA, CellB) => {
         var x = CellA.x - CellB.x;
         var y = CellA.y - CellB.y;
   

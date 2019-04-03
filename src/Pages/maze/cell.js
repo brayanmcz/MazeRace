@@ -9,12 +9,12 @@ export class Cell {
     }
 
     show = (r, g, b, a) => {
-        var i = this.x * this.w - 0.25;
-        var j = this.y * this.w - 0.25;
+        var i = this.x * this.w;
+        var j = this.y * this.w;
         this.p5.noStroke();
         this.p5.fill(r, g, b, a);
-        for (var idx = 0; idx < 1; idx++) {
-          this.p5.rect(i, j, this.w + 0.5, this.w + 0.5);
+        for (var idx = 0; idx < 15; idx++) {
+          this.p5.rect(i, j, this.w, this.w);
         }
         this.p5.stroke(0, 0, 0);
 
