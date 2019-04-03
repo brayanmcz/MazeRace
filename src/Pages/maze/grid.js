@@ -14,7 +14,7 @@ export class Grid {
             this.grid.push(row);
             row = []
         }
-        // this.mazeSize = mazeSize;
+        this.mazeSize = mazeSize;
     }
 
     // Generates the Grid at intitialisation
