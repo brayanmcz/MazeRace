@@ -6,10 +6,14 @@ import JoinPage from './Pages/Join';
 import CreatePage from './Pages/Create';
 import NotFoundPage from './Pages/404';
 import LobbyPage from './Pages/Lobby';
-import Maze from './Pages/Maze';
+// import Maze from './Pages/Maze';
 
 const Wrapper = styled.div`
-
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  background-image: linear-gradient(purple, blue);
 `;
 
 class App extends Component {
@@ -23,6 +27,7 @@ class App extends Component {
             <Route exact path='/create' component={CreatePage} />
             <Route exact path='/lobby/:id' component={LobbyPage} />
             <Route exact path='/game/:id' component={Maze} />
+            
             <Route component={NotFoundPage} />
           </Switch>
         </Router>        
