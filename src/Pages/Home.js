@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import logo from './maze.png';
 
 const Wrapper = styled.div`
   @media only screen and (min-height: 569px) {
-    padding-top: 25vh;
+    padding-top: 15vh;
   }
 
   .title-container {
-    color: white;
-    font-size: 40px;
     font-weight: 600;
     padding-top: 50px;
     padding-bottom: 50px;
@@ -16,8 +15,15 @@ const Wrapper = styled.div`
 
   .btn-outline {
     background-color: black;
-    color: white;
     height: 50px;
+  }
+
+  .text-black{
+    color: black;
+  }
+
+  .text-white{
+    color: white;
   }
 
   .heavy {
@@ -26,6 +32,7 @@ const Wrapper = styled.div`
 
   .pin-input {
     height: 50px;
+    font-weight: 600;
   }
 
   hr {
@@ -34,7 +41,6 @@ const Wrapper = styled.div`
 
   .text-center{
     padding-top: 5px;
-    color:white;
     font-weight: 600;
   }
 
@@ -47,6 +53,20 @@ const Wrapper = styled.div`
     padding-bottom: 10px;
   }
 
+  .title {
+    font-size: 50px;
+  }
+
+  .center {
+    width: 100%;
+  }
+
+  .logo{
+    height: 200px;
+    width: 200px;
+    margin-left: 35%;
+  }
+
 `;
 
 class HomePage extends Component {
@@ -55,17 +75,22 @@ class HomePage extends Component {
       <Wrapper>
         <div className="container-fluid">
           <div className="row justify-content-center title-container">
-            <div className="col-6">
-              <p className="text-center">MAZE RACE</p>
+            <div className="col-12">
+              <img className="logo" src={logo} />
+            </div>
+          </div>
+          <div className="row justify-content-center title-container">
+            <div className="col-12">
+              <p className="text-center title text-white">LABYRINTH</p>
             </div>
           </div>
           <div className="row justify-content-center button-container">
-            <div className="center col-6">
+            <div className="center col-sm-6 col-md-5 col-lg-4 col-xl-2" >
               <input
                 className="pin-input btn-block text-center heavy outline-black"
                 placeholder="GAME PIN"
               />
-              <button type="button" className="btn-outline btn-block heavy">
+              <button type="button" className="btn-outline btn-block heavy text-white">
                 JOIN
               </button>
               <div className="row">
@@ -75,7 +100,7 @@ class HomePage extends Component {
                       <hr/>
                     </div>
                     <div className="col-4">
-                      <p className="text-center">OR</p>
+                      <p className="text-center text-white">OR</p>
                     </div>
                     <div className="col-4">
                       <hr/>
@@ -85,7 +110,7 @@ class HomePage extends Component {
               </div>
               <button
                 type="button"
-                className="btn-outline btn-block heavy"
+                className="btn-outline btn-block heavy text-white"
               >
                 CREATE
               </button>
