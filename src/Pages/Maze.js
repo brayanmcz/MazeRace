@@ -8,7 +8,7 @@ class Maze extends Component {
     gen_game(p5) {
         p5.frameRate(60);
         let canvasSize = p5.windowHeight - p5.windowWidth < 0 ? p5.windowHeight - 20 : p5.windowWidth - 20;
-        var mazeComplexity = 25;
+        var mazeComplexity = 10;
         var mazeSize = mazeComplexity % 2 === 0 ? mazeComplexity + 1 : mazeComplexity;
         var cellSize = canvasSize / mazeSize;
         var middle = p5.floor(mazeSize / 2);
@@ -24,9 +24,10 @@ class Maze extends Component {
             p5.createCanvas(canvasSize + 1, canvasSize + 1);
             p5.background(255);
             cell.visited = true;
-            maze.gen_maze(cell);
+            maze.gen_maze();
             cell.show(0, 200, 25, 100);
-            player.show(cellSize)
+            player.show(cellSize);
+            console.table(maze.grid);
         }
         
         p5.draw = () => {

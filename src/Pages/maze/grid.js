@@ -3,31 +3,35 @@ import { Cell }  from './cell.js';
 export class Grid {
     constructor(mazeSize, cellSize, p5) {
         this.grid = [];
-        var row = [];
-        for (var y = 0; y < mazeSize; y++) {
-            for (var x = 0; x < mazeSize; x++) {
-                row[x] = new Cell(x, y, cellSize, p5);
-            }
-            this.grid[y] = row;
-        }
         this.p5 = p5;
+
+        var row = [];
+        for (var x = 0; x < mazeSize; x++) {
+            for (var y = 0; y < mazeSize; y++) {
+              var cell = new Cell(x, y, cellSize, p5)
+              row.push(cell);
+            }
+            this.grid.push(row);
+            row = []
+        }
         // this.mazeSize = mazeSize;
     }
 
     // Generates the Grid at intitialisation
-    gen_maze = (Cell) => {
+    gen_maze = () => {
         var started = false;
         var stack = [];
-        var current = Cell;
-        var next;
+        var current = this.grid[0][0];
         while (!started || stack.length) {
+            // console.log(current);
             started = true;
-            next = this.check_neighbors(current);
+            var next = this.check_neighbors(current);
             if (next) {
               next.visited = true;
               stack.push(current);
               this.remove_walls_between(current, next);
               current.show(255,255,255,100);
+              next.show(255,255,255,100);
               current = next;
             } else if (stack.length > 0) {
               current = stack.pop();
@@ -63,8 +67,10 @@ export class Grid {
         // If there are neighbors
         if (neighbours.length > 0) {
             var randomNeighbour = this.p5.floor(this.p5.random(0, neighbours.length));
+            console.log("Neighbour: ", neighbours[randomNeighbour]);
             return neighbours[randomNeighbour];
         } else {
+          console.log("UNDEFINED");
             return undefined;
         }
     };

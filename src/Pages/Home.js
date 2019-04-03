@@ -76,7 +76,7 @@ class HomePage extends Component {
         <div className="container-fluid">
           <div className="row justify-content-center title-container">
             <div className="col-12">
-              <img className="logo" src={logo} />
+              <img className="logo" src={logo} alt="logo"/>
             </div>
           </div>
           <div className="row justify-content-center title-container">
