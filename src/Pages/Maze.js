@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { Grid } from './maze/grid.js';
 // import { Cell }  from './maze/cell.js';
 import { Player } from './maze/player.js';
-import P5Wrapper from "react-p5-wrapper";
-
+import P5Wrapper from 'react-p5-wrapper';
 
 class Maze extends Component {
     gen_game(p5) {
@@ -13,9 +12,9 @@ class Maze extends Component {
         var mazeSize = mazeComplexity % 2 === 0 ? mazeComplexity + 1 : mazeComplexity;
         var cellSize = canvasSize / mazeSize;
         var middle = p5.floor(mazeSize / 2);
-        var maze = new Grid(mazeSize, cellSize);
+        var maze = new Grid(mazeSize, cellSize, p5);
         var cell = maze.grid[middle][middle];
-        var player = new Player(0, 0, 'red');
+        var player = new Player(0, 0, 'red', p5);
 
         p5.keyPressed = () => {
             maze.keyPressed(player);
@@ -25,7 +24,7 @@ class Maze extends Component {
             p5.createCanvas(canvasSize + 1, canvasSize + 1);
             p5.background(255);
             cell.visited = true;
-            maze.gen_grid(cell);
+            maze.gen_maze(cell);
             cell.show(0, 200, 25, 100);
             player.show(cellSize)
         }
@@ -38,10 +37,8 @@ class Maze extends Component {
     render() {
         return (
             <div>
-            <p>Maze Game</p>
-            {
-                <P5Wrapper sketch={this.gen_maze} />
-            }
+                <p>Maze Game</p>
+                <P5Wrapper sketch={this.gen_game} />
             </div>
         );
     }

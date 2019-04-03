@@ -1,10 +1,9 @@
-import p5 from 'p5';
-
 export class Player {
-    constructor(x, y, color) {
+    constructor(x, y, color, p5) {
         this.x = x;
         this.y = y;
         this.color = color;
+        this.p5 = p5;
     }
 
     move = (d) => {
@@ -17,10 +16,10 @@ export class Player {
     show = (cellSize) => {
         var i = this.x * cellSize;
         var j = this.y * cellSize;
-        p5.noStroke();
-        p5.fill(p5.color(this.color));
+        this.p5.noStroke();
+        this.p5.fill(this.p5.color(this.color));
         for (var idx = 0; idx < 15; idx++) {
-          p5.rect(i + 3, j + 3, cellSize - 5, cellSize - 5);
+            this.p5.rect(i + 3, j + 3, cellSize - 5, cellSize - 5);
         }
     };
 }

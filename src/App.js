@@ -6,7 +6,7 @@ import JoinPage from './Pages/Join';
 import CreatePage from './Pages/Create';
 import NotFoundPage from './Pages/404';
 import LobbyPage from './Pages/Lobby';
-// import Maze from './Pages/Maze';
+import Maze from './Pages/Maze';
 
 const Wrapper = styled.div`
   margin: 0;
@@ -26,7 +26,7 @@ class App extends Component {
             <Route exact path="/join" component={JoinPage} />
             <Route exact path='/create' component={CreatePage} />
             <Route exact path='/lobby/:id' component={LobbyPage} />
-            <Route exact path='/game/:id' component={Maze} />
+            <Route exact path='/game/' component={Maze} />
             
             <Route component={NotFoundPage} />
           </Switch>

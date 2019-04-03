@@ -1,16 +1,16 @@
 import { Cell }  from './cell.js';
-import p5 from 'p5';
 
 export class Grid {
-    constructor(mazeSize, cellSize) {
+    constructor(mazeSize, cellSize,p5) {
         this.grid = [];
         var row = [];
         for (var y = 0; y < mazeSize; y++) {
             for (var x = 0; x < mazeSize; x++) {
-                row[x] = new Cell(x, y, cellSize);
+                row[x] = new Cell(x, y, cellSize, p5);
             }
             this.grid[y] = row;
         }
+        this.p5 = p5;
     }
 
     // Generates the Grid at intitialisation
@@ -20,7 +20,7 @@ export class Grid {
         var current = Cell;
         while (!started || stack.length) {
             started = true;
-            var next = this.checkNeighbors(current);
+            var next = this.check_neighbors(current);
             if (next) {
               next.visited = true;
               stack.push(current);
@@ -59,7 +59,7 @@ export class Grid {
 
         // If there are neighbors
         if (neighbours.length > 0) {
-            var randomNeighbour = p5.floor(p5.random(0, neighbours.length));
+            var randomNeighbour = this.p5.floor(this.p5.random(0, neighbours.length));
             return neighbours[randomNeighbour];
         } else {
             return undefined;
@@ -95,26 +95,26 @@ export class Grid {
 
       keyPressed(player) {
         if (
-          p5.keyCode === p5.UP_ARROW &&
+          this.p5.keyCode === this.p5.UP_ARROW &&
           this.grid[player.x][player.y].walls[0] === false
         ) {
           player.move(0);
         } else if (
-          p5.keyCode === p5.DOWN_ARROW &&
+          this.p5.keyCode === this.p5.DOWN_ARROW &&
           this.grid[player.x][player.y].walls[2] === false
         ) {
           player.move(2);
         } else if (
-          p5.keyCode === p5.LEFT_ARROW &&
+          this.p5.keyCode === this.p5.LEFT_ARROW &&
           this.grid[player.x][player.y].walls[3] === false
         ) {
           player.move(3);
         } else if (
-          p5.keyCode === p5.RIGHT_ARROW &&
+          this.p5.keyCode === this.p5.RIGHT_ARROW &&
           this.grid[player.x][player.y].walls[1] === false
         ) {
           player.move(1);
         }
-        p5.redraw();
+        this.p5.redraw();
     };
 }
